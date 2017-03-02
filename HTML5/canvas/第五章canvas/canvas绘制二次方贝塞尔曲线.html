@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绘制二次方贝塞尔曲线</title>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="500" height="300" style="border: 1px solid #eee;"></canvas>
+		<script type="text/javascript">
+			var c =document.getElementById('mycanvas');
+			var con = c.getContext('2d');
+			/*下面开始绘制二次方贝塞尔曲线*/
+			con.strokeStyle = "darkblue";
+			con.beginPath();
+			con.moveTo(0,200);
+			con.quadraticCurveTo(75,50,300,200);
+			con.stroke();
+			con.globalCompositeOperation = "source-over";
+			/*下面绘制的直线用于表示上面曲线的控制点和控制线，控制点的坐标即是俩直线的交点坐标 （75,50 ）*/
+			con.strokeStyle = "f0f";
+			con.beginPath();
+			con.moveTo(75,50);
+			con.lineTo(0,200);
+			con.moveTo(75,50);
+			con.lineTo(300,200);
+			con.stroke();
+			
+		</script>
+	</body>
+</html>

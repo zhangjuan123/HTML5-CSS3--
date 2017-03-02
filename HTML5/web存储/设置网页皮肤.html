@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设置网页皮肤</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*检测浏览器是否支持 localStroge*/
+			if(typeoflocalStroge==='undefined'){
+				window.alert("您的浏览器不支持localStroge。");
+			}else{
+				window.alert("您的浏览器支持localStroge。");
+			}
+			var stroge=localStorage;
+			/*设置div背景颜色为红色，并保存localStroge*/
+			function redSet(){
+				var value = "red";
+				document.getElementById("divblock").style.backgroundColor=value;
+				window.localStorage.setItem("DivBackGroundColor",value);
+			}
+			/*设置div背景颜色为绿色，并保存localStroge*/
+			function greenSet(){
+				var value = "green";
+				document.getElementById("divblock").style.backgroundColor=value;
+				window.localStorage.setItem("DivBackGroundColor",value);
+			}
+			/*设置div背景颜色为蓝色，并保存localStroge*/
+			function blueSet(){
+				var value = "blue";
+				document.getElementById("divblock").style.backgroundColor=value;
+				window.localStorage.setItem("DivBackGroundColor",value);
+			}
+		</script>
+		<section id="main">
+			<button id="redbutton" onclick="redSet()">红色</button>
+			<button id="greenbutton" onclick="greenSet()">绿色</button>
+			<button id="bluebutton" onclick="blueSet()">蓝色</button>
+			<div id="divblock" style="width:1500px; height: 500px; margin-top: 20px; border: 1px solid #eee;"></div>
+			
+		</section>
+	</body>
+</html>

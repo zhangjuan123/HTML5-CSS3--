@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>阴影</title>
+	</head>
+	<body>
+		<p>canvas中创建阴影需要四个属性：</p>
+		<ul>
+			<li>shadowOffsetX(阴影的水平偏移)</li>
+			<li>shadowOffsetY(阴影的垂直偏移)</li>
+			<li>shadowBlur(阴影羽化程度)</li>
+			<li>shadowColor(阴影的颜色)</li>
+		</ul>
+		<canvas id="mycanvas" width="400" height="200"></canvas>
+		<script type="text/javascript">
+		 function draw(){
+		 	var ctx = document.getElementById("mycanvas").getContext("2d");
+			/*设置阴影*/
+			ctx.shadowOffsetX = 3;
+			ctx.shadowOffsetY = 3;
+			ctx.shadowBlur = 2;
+			ctx.shadowColor = "rgba(0,0,0,0.5)";
+			/*绘制矩形*/
+			ctx.fillStyle = "#3cf";
+			ctx.fillRect(20,20,300,60);
+			ctx.fill();
+			/*绘制文本*/
+			ctx.font="45px 黑体 ";
+			ctx.fillStyle = "white";
+			ctx.fillText("HTML5+CSS3",30,64);
+		 }
+		window.onload =function (){
+			draw();
+		}
+		</script>
+		
+		<p>ps:如果要以填充方式绘制文字，可以使用 filltext 方法</p>
+	</body>
+</html>

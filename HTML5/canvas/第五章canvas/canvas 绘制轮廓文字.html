@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绘制轮廓文字</title>
+		
+	</head>
+	<body>
+		<canvas id="mycanvas" width="350" height="200"></canvas>
+		<script type="text/javascript">
+			var ctx=document.getElementById("mycanvas").getContext("2d");
+			ctx.font= "35px 黑体";
+			ctx.fillStyle ="red";
+			ctx.fillText("填充方式绘制实心文字",30,60,200); //第四个参数为显示文字的最大宽度，可选项。
+			
+			ctx.font ="bold 35px 宋体";
+			ctx.strokeStyle="green";
+			ctx.strokeText("绘制轮廓文字",30,100)
+			ctx.font="25px 隶书";
+			ctx.strokeStyle ="blue";
+			ctx.strokeText("绘制轮廓文字",30,130,300);
+			
+		</script>
+	</body>
+</html>

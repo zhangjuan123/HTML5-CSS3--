@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			本例使用setTransform 方法将前面已经发生变换的矩阵首先重置为最初状态的矩阵，即恢复最出的原点，然后再将坐标原点改为（10,10），并以最新的基准绘制一个蓝色的矩形
+		</p>
+		<canvas id="mycanvas" width="1000" height="300"></canvas>
+		<script type="text/javascript">
+			function draw(){
+				var ctx = document.getElementById('mycanvas').getContext("2d");
+				
+				ctx.translate(200,20);
+				for(var i=1;i<80; i++){
+					ctx.save();
+					/*ctx.translate(30,30);
+					ctx.scale(0.95,0.95);*/
+					ctx.transform(0.95,0,0,0.95,30,30);
+					ctx.rotate(Math.PI/12);
+					ctx.beginPath();
+					ctx.fillStyle ="red";
+					ctx.globalAlpha = "0.4";
+					ctx.arc(0,0,50,0,Math.PI*2,true);
+					ctx.closePath();
+					ctx.fill();
+					
+				}
+				ctx.setTransform(1,0,0,1,10,10);
+				ctx.fillStyle = "blue";
+				ctx.fillRect(0,0,50,50);
+				ctx.fill();
+			}
+			window.onload = function(){
+				draw();
+			}
+		</script>
+	</body>
+</html>

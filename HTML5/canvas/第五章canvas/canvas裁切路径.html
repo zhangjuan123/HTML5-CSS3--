@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>clip用于裁切路径，其原理与绘制普通的canvas 图形类似，只不过clip 的作用是形成一个蒙版，没有被蒙版的区域会被隐蔽</p>
+		<canvas id="mycanvas" width="1000" height="300"></canvas>
+		<script type="text/javascript">
+			function draw(){
+				var ctx = document.getElementById('mycanvas').getContext("2d");
+				/*创建背景*/
+				ctx.fillStyle = "black";
+				ctx.fillRect(0,0,300,300);
+				ctx.fill();
+				/*绘制圆形*/
+				ctx.beginPath();
+				ctx.arc(150,150,120,0,2*Math.PI,true);
+				ctx.closePath();
+				/*裁切路径*/
+				ctx.clip();
+				
+				
+				ctx.translate(200,20);
+				for(var i=1;i<80; i++){
+					ctx.save();
+					ctx.translate(30,30);
+					ctx.scale(0.95,0.95);
+					ctx.rotate(Math.PI/12);
+					ctx.beginPath();
+					ctx.fillStyle ="red";
+					ctx.globalAlpha = "0.4";
+					ctx.arc(0,0,50,0,Math.PI*2,true);
+					ctx.closePath();
+					ctx.fill();
+					
+				}
+			}
+			window.onload = function(){
+				draw();
+			}
+		</script>
+	</body>
+</html>

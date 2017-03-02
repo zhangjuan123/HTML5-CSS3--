@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>scale用于增减canvas 上下文对象中的像素点数目，从而实现图形或者位图的放大和缩小</p>
+		<ul>
+			<li>context.scale(x,y) x为横轴缩放因子，y为纵轴缩放因子</li>
+			<li>数值必须是正数。如果要放大图形，数值需设置大于1的数值，如果缩小图形，则将参数 设置为小1的数值</li>
+		</ul>
+		<canvas id="mycanvas" width="1000" height="300"></canvas>
+		<script type="text/javascript">
+			function draw(){
+				var ctx = document.getElementById('mycanvas').getContext("2d");
+				
+				ctx.translate(200,20);
+				for(var i=1;i<80; i++){
+					ctx.save();
+					ctx.translate(30,30);
+					ctx.scale(0.95,0.95);
+					ctx.rotate(Math.PI/12);
+					ctx.beginPath();
+					ctx.fillStyle ="red";
+					ctx.globalAlpha = "0.4";
+					ctx.arc(0,0,50,0,Math.PI*2,true);
+					ctx.closePath();
+					ctx.fill();
+					
+				}
+			}
+			window.onload = function(){
+				draw();
+			}
+		</script>
+	</body>
+</html>

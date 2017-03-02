@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>使用globalAlpha设置透明度，该方法使用与为<b>大量图形</b>设置<b>相同</b>的透明度</p>
+		<p>还可以通过设置色彩透明度rgba（R,G,B,A）参数来为图形设置不同的透明度，相对于globalAlpha设置透明度更加灵活</p>
+		<p style="color: red;">rgba必须是单引号</p>
+		<canvas id="mycanvas" width="1000" height="300"></canvas>
+		<script type="text/javascript">
+			function draw(){
+				var ctx = document.getElementById('mycanvas').getContext("2d");
+				
+				ctx.translate(200,20);
+				for(var i=1;i<50; i++){
+					ctx.save();
+					/*ctx.translate(30,30);
+					ctx.scale(0.95,0.95);*/
+					ctx.transform(0.95,0,0,0.95,30,30);
+					ctx.rotate(Math.PI/12);
+					ctx.beginPath();
+					ctx.fillStyle='rgba(255,0,0,'+(1-(i+10)/40)+')';
+					//ctx.globalAlpha = "0.4";
+					ctx.arc(0,0,50,0,Math.PI*2,true);
+					ctx.closePath();
+					ctx.fill();
+					
+				}
+			}
+			window.onload = function(){
+				draw();
+			}
+		</script>
+	</body>
+</html>

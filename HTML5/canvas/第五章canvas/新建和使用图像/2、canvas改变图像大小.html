@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body><p>drawImage方法有三种用法</p>
+		<ul>
+			<li>第1种：context.drawImage(image,x,y)——引入图像</li>
+			<li><b>第2种：context.drawImage(image,x,y,width,height)——改变图像大小(好处是图像迁就页面布局)</b></li>
+			<li>第3种：context.drawImage(image,sx,sy,sWidth,sHeight,dx,dy,dWidth,dHeight)——创建图像切片</li>
+		</ul>
+		<canvas id="mycanvas" width="300" height="200"></canvas>
+		<script type="text/javascript">
+			function draw(){
+				var ctx =document.getElementById("mycanvas").getContext("2d");
+				var img =new Image();
+				img.onload =function(){
+					ctx.drawImage(img,0,0);
+					//ctx.drawImage(img,0,0,847,797); //后俩个参数为改变图像大小
+					ctx.font ="italic 60px Arial Black";
+					ctx.shadowOffsetX =3;
+					ctx.shadowOffsetY=3;
+					ctx.shadowBlur=2;
+					ctx.shadowColor ="rgba(0,0,0,0.7)";
+					ctx.fillStyle="White";
+					ctx.fillText("COOL",50,165);
+				}
+				img.src="images/bg.jpg";
+			}
+			window.onload= function(){
+				draw();
+			}
+		</script>
+	</body>
+</html>

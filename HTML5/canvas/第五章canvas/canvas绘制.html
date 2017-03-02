@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<canvas id="mycanves" width="1024" height="400" style="border: 1px solid #ddd;"></canvas>
+			<script type="text/javascript">
+				var c = document.getElementById("mycanves");
+				var ctx = c.getContext("2d");
+				/*canvas 绘制矩形*/
+				ctx.fillStyle ="#f00";
+				ctx.fillRect(0,0,150,75);
+				/*canvas 绘制直线*/
+				ctx.moveTo(20,20);
+				ctx.lineTo(200,200);
+				ctx.stroke();
+				/*canvas 绘制矩形轮廓*/
+				ctx.strokeStyle='#ff0';
+				ctx.strokeRect(150,150,200,200);
+				/*canvas 绘制圆形*/
+				ctx.beginPath();
+				ctx.arc(300,200,50,0,Math.PI*2,true);
+				ctx.closePath();
+				ctx.fill();
+			</script>
+		<!--绘制弧线-->
+		<canvas id="mycanves2" width="1024" height="200"></canvas>
+		<script type="text/javascript">
+			var c2=document.getElementById("mycanves2");
+			var ctx2 =c2.getContext("2d");
+			for(var i=0; i<15;i++){
+				ctx2.strokeStyle="aqua";
+				ctx2.beginPath();
+				ctx2.arc(0,150,i*10,0,Math.PI*3/2,true);
+				//ctx2.closePath();
+				ctx2.stroke();
+			}
+		</script>
+		<!--绘制三角形-->
+		<canvas id="mycanves3" width="1024" height="200"></canvas>
+		<script type="text/javascript">
+			var c = document.getElementById("mycanves3");
+			var ctx3 = c.getContext("2d");
+			ctx3.fillStyle = "red";
+			ctx3.strokeStyle = "red";
+			ctx3.beginPath();
+			ctx3.moveTo(25,25);
+			ctx3.lineTo(150,25);
+			ctx3.lineTo(25,150);
+			ctx3.fill();
+			
+			
+		</script>
+		<!--绘制三角形轮廓-->
+		<canvas id="mycanves4" width="1024" height="200"></canvas>
+		<script type="text/javascript">
+			var c = document.getElementById("mycanves4");
+			var ctx4 = c.getContext("2d");
+			ctx4.strokeStyle = "red";
+			ctx4.beginPath();
+			ctx4.moveTo(25,25);
+			ctx4.lineTo(150,25);
+			ctx4.lineTo(25,150);
+			ctx4.closePath();
+			ctx4.stroke();
+			/*如果要绘制空心三角形，则用 strokeStyle 和 stroke */
+			
+		</script>
+	</body>
+</html>

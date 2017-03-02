@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>不同线型</title>
+		
+	</head>
+	<body>
+		<dl>
+			<dt>应用不同线型</dt>
+			<dd>lineWith(线宽)</dd>
+		</dl>
+		<h2>lineWith</h2>
+		<canvas id="mycanvas" width="800" height="200"></canvas>
+		
+		<dl>
+			<dt>lineCap(端点样式)</dt>
+			<dd>
+				<ul>端点样式有三种
+					<li>butt</li>
+					<li>round</li>
+					<li>square</li>
+				</ul>
+			</dd>
+		</dl>
+		<h2>lineCap</h2>
+		<canvas id="mycanvas1" width="800" height="200"></canvas>
+		<dl>
+			<dt>lineJoin(连接点样式)</dt>
+			<dd>
+				<ul>连接点样式有三种
+					<li>round</li>
+					<li>bevel</li> 
+					<li>miter</li>
+				</ul>
+			</dd>
+		</dl>
+		<h2>lineJoin</h2>
+		<canvas id="mycanvas2" width="800" height="100"></canvas>
+		<dl>	
+			<dt>miterLimit(绘制交点的样式)</dt>
+			<dd>
+				<ul>
+					<li>  miterLimit 用于设置两条线段连接处交点的绘制方式，当宽线条使用limeJoin属性并将其值设置为miter是，如果绘制俩条线段并以锐角相交，所得的斜面可能会非常长 。</li>
+					<li>miterLimit属性的作用是为斜面的长度设置一个上限，默认为10，即规定斜面的长度不能超过线条宽度的1-倍。</li>
+					<li>如果lineJoin 的属性值为round或者bevel，则miterLimit属性无效</li>
+				</ul>
+			</dd>
+		</dl>
+		<h2>miterLimit</h2>
+		<canvas id="mycanvas3" width="1600" height="300"></canvas>
+		<script type="text/javascript">
+			function draw(){
+			var ctx =document.getElementById("mycanvas").getContext("2d");
+			   for(var i =0;i<12;i++){
+			     ctx.strokeStyle ="red";
+			     ctx.lineWidth = 1+i;
+			     ctx.beginPath();
+			     ctx.moveTo(5,5+i*14);
+			     ctx.lineTo(140,5+i*14);
+			     ctx.stroke();
+			   }
+			}
+			
+			
+			function draw1(){
+			var ctx1 =document.getElementById("mycanvas1").getContext("2d");
+			var lineCap=['butt','round','square'];
+			/*绘制参考线*/
+			ctx1.strokeStyle="red";
+			ctx1.beginPath();
+			ctx1.moveTo(10,10);
+			ctx1.lineTo(10,150);
+			ctx1.moveTo(150,10);
+			ctx1.lineTo(150,150);
+			ctx1.stroke();
+			
+			/*绘制直线段*/
+			ctx1.strokeStyle="blue";
+			 for(var j=0;j<lineCap.length;j++){
+				ctx1.lineWidth=20;
+				ctx1.lineCap = lineCap[j];
+				ctx1.beginPath();
+				ctx1.moveTo(10,30+j*50);
+				ctx1.lineTo(150,30+j*50);
+				ctx1.stroke();
+			 }
+			}
+			
+			function draw2(){
+			var ctx2 =document.getElementById("mycanvas2").getContext("2d");
+			var lineJoin = ['round','bevel','miter'];
+			ctx2.strokeStyle="blue";
+			   for(var k =0;k<lineJoin.length;k++){
+			     ctx2.lineWidth=20; 
+			     ctx2.lineJoin =lineJoin[k];
+			     ctx2.beginPath();
+			     ctx2.moveTo(10+k*150,30);
+			     ctx2.lineTo(100+k*150,30);
+			     ctx2.lineTo(100+k*150,100);
+			     ctx2.stroke();
+			   }
+			}
+			
+			function draw3(){
+				var ctx3 =document.getElementById("mycanvas3").getContext("2d");
+				   for(var m=1;m<10;m++){
+						ctx3.strokeStyle="blue";
+					     ctx3.lineWidth=10; 
+					     ctx3.lineJoin ="miter";
+					     ctx3.miterLimit =m*10;
+					     ctx3.beginPath();
+					     ctx3.moveTo(10,m*30);
+					     ctx3.lineTo(100,m*30);
+					     ctx3.lineTo(10,33*m);
+					     ctx3.stroke();
+				   }
+				 
+			}
+			window.onload = function(){
+				draw();
+				draw1();
+				draw2();
+				draw3();
+			}
+		</script>
+	</body>
+</html>

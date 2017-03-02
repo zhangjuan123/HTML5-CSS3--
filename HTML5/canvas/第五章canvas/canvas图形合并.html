@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图形合并</title>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="300" height="200"></canvas>
+		<script type="text/javascript">
+			var con=document.getElementById("mycanvas").getContext("2d");
+			/*先画一个红色的100*100的矩形*/
+			con.fillStyle ="pink";
+			con.fillRect(50,25,100,100);
+			/*再画一个绿色的圆*/
+			con.fillStyle = "aqua";
+			//1、默认值 新图覆盖旧图
+			//con.globalCompositeOperation = "source-over";  
+			//2、 旧图覆盖新图
+			//con.globalCompositeOperation = "destination-over";
+			//3、 只显示原有图和原图和新图重叠部分，并且新图在原图之上
+			//con.globalCompositeOperation = "source-atop";
+			//4、 只显示新图和新图和原图重叠部分，并且原图在新图之上
+			//con.globalCompositeOperation = "destination-atop";
+			//5、 新图形只出现在与原有内容重叠的部分，其余区域变为透明
+			//con.globalCompositeOperation = "source-in";
+			//6、 原图只出现与新图内容重叠的部分，其余区域变为透明
+			//con.globalCompositeOperation = "destination-in";
+			//7、 新图中与原图不重叠的部分被保留
+			//con.globalCompositeOperation = "source-out";
+			//8、 原图与新图不重叠的部分被保留
+			//con.globalCompositeOperation = "destination-in";
+			//9、 俩图形重叠部分被做加色处理
+			//con.globalCompositeOperation = "lighter";
+			//10、 俩图形重叠部分被做减色处理
+			//con.globalCompositeOperation = "darker";
+			//11、 只保留新图形
+			//con.globalCompositeOperation = "copy";
+			//12、 讲重叠部分变成透明
+			con.globalCompositeOperation = "xor";
+			con.beginPath();
+			con.arc(150,125,50,0,2*Math.PI,true);
+			con.closePath();
+			con.fill();
+			
+		</script>
+	</body>
+</html>

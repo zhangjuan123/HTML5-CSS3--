@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>测量文字宽度</title>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="350" height="200" style="border: 1px solid #eee;"></canvas>
+		<script type="text/javascript">
+			var ctx =document.getElementById("mycanvas").getContext("2d");
+			ctx.font="bold 20px 楷书";
+			ctx.fillStyle="red";
+			var txt1= " 滚滚长江东逝水，浪花淘尽英雄。";
+			ctx.fillText(txt1,10,40);
+			var txt2="以上字符串的宽度为:";
+			var mtx1=ctx.measureText(txt1);
+			var mtx2=ctx.measureText(txt2);
+			ctx.font="bold 15px 宋体";
+			ctx.fillStyle="blue";
+			ctx.fillText(txt2,10,80);
+			ctx.fillText(mtx1.width,mtx2.width,80);
+			//ctx.fillText(mtx2.width,50,180);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body><p>drawImage方法有三种用法</p>
+		<ul>
+			<li>第1种：context.drawImage(image,x,y)——引入图像</li>
+			<li>第2种：context.drawImage(image,x,y,width,height)——改变图像大小(好处是图像迁就页面布局)</li>
+			<li>
+				<dl>
+					<dt><b>第3种：context.drawImage(image,sx,sy,sWidth,sHeight,dx,dy,dWidth,dHeight)——创建图像切片</b></dt>
+					<dd>sx,sy 为源图像被切割区域的起始坐标</dd>
+					<dd>sWidth,sHeight 为源图像被切割下来的宽度和高度</dd>
+					<dd>dx,dy 被切割下来的源图放置到目标canvas的起始坐标</dd>
+					<dd>dWidth,dHeight 被切割下来的源图放置到目标canvas显示的宽度和高度</dd>
+				</dl>
+				
+			</li>
+			
+		</ul>
+		<canvas id="mycanvas" width="600" height="400"></canvas>
+		
+		<script type="text/javascript">
+			function draw(){
+				var ctx =document.getElementById("mycanvas").getContext("2d");
+				var img =new Image();
+				img.onload =function(){
+					ctx.drawImage(img,0,0);
+					//ctx.drawImage(img,0,0,847,797); //后俩个参数为改变图像大小
+					ctx.drawImage(img,30,40,140,180,0,240,140,180);
+				}
+				img.src="images/bg1.jpg";
+			}
+			window.onload= function(){
+				draw();
+			}
+		</script>
+	</body>
+</html>

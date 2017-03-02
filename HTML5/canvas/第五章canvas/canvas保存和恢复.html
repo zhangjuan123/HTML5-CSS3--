@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="800" height="500"></canvas>
+		<script type="text/javascript">
+			var c = document.getElementById('mycanvas');
+			var con = c.getContext('2d');
+			/*开始绘制矩形*/
+			con.fillStyle ="red";
+			con.strokeStyle ="blue";
+			con.fillRect(20,20,100,100);
+			con.strokeRect(20,20,100,100);
+			con.fill();
+			con.stroke();
+			/*保存当前canvas 状态*/
+			con.save();
+			/*绘制另一个 矩形*/
+			con.fillStyle = "aqua";
+			con.strokeStyle = "fuchsia";
+			con.fillRect(140 ,20 ,100,100);
+			con.strokeRect(140,20,100,100);
+			con.fill();
+			con.stroke();
+			/*恢复第一个矩形状态*/
+			con.restore();
+			/*绘制俩个矩形*/
+			con.fillRect(20,140,50,50);
+			con.strokeRect(80,140,50,50);
+		</script>
+	</body>
+</html>
